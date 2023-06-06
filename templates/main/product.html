@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Product{% endblock %}
+
+<!-- {% block headheader %}
+<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+    <li><a href="/product" class="nav-link px-2 text-secondary">Product</a></li>
+    <li><a href="/add" class="nav-link px-2 text-white">Add Product</a></li>
+    <li><a href="/category" class="nav-link px-2 text-white">Category</a></li>
+    
+</ul>
+{% endblock %} -->
+
+{% block content %}
+<main>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for i in products %}
+                <div class="col">
+                    <div class="card shadow-sm text-bg-dark">
+                        <img class="bd-placeholder-img card-img-top" width="100%" src="{{ i.image.url }}" focusable="false">
+                        <div class="card-body">
+                            <h4 class="card-text">{{ i.title }}</h4>
+                            <h6 class="card-text">Категория: {{ i.category }}</h6>
+                            <p class="card-text">{{ i.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text">Price: {{ i.price }}</p>
+                                <small class="text-body-secondary">{{ i.created_at }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

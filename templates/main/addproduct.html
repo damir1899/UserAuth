@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock %}
+
+<!-- {% block headheader %}
+<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+    <li><a href="/product" class="nav-link px-2 text-white">Product</a></li>
+    <li><a href="/add" class="nav-link px-2 text-secondary">Add Product</a></li>
+    <li><a href="/category" class="nav-link px-2 text-white">Category</a></li>
+    
+</ul>
+{% endblock %} -->
+
+{% block content %}
+<form style="margin-top: 20px; margin-bottom: 20px; border-radius: 15px;" 
+    class="card shadow-sm text-bg-dark" method="post" 
+    enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.image }}
+    {{ form.title }}
+    {{ form.description }}
+    {{ form.price }}
+    {{ form.category }}
+    <button class="btn btn-outline-light" style="width: 1190px; margin: 20px;" 
+    type="submit">Опубликовать</button>
+    <a type="button" href="/" class="btn btn-outline-light" style="width: 1190px; margin: 20px; margin-top: 0;">Назад</a>
+</form>
+{% endblock %}

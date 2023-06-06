@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} Category {% endblock %}
+
+<!-- {% block headheader %}
+<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+    <li><a href="/product" class="nav-link px-2 text-white">Product</a></li>
+    <li><a href="/add" class="nav-link px-2 text-white">Add Product</a></li>
+    <li><a href="/category" class="nav-link px-2 text-secondary">Category</a></li>
+
+</ul>
+{% endblock %} -->
+
+{% block content %}
+<main>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for i in product %}
+                <div class="col">
+                    <div class="card shadow-sm text-bg-dark">
+                        <div class="card-body">
+                            <h6 class="card-text">Категория: {{ i.title }}</h6>
+                            <small class="text-body-secondary">{{ i.created_at }}</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+    </div>
+</main>
+<form style="display:flex; align-items:center; margin-top: 100px; border-radius: 15px;"
+    class="card shadow-sm text-bg-dark" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.title }}
+    <button class="btn btn-outline-light" style="width: 1190px; margin: 20px;" type="submit">Добавить категорию</button>
+    <a type="button" href="/" class="btn btn-outline-light"
+        style="width: 1190px; margin: 20px; margin-top: 0;">Назад</a>
+</form>
+{% endblock %}
