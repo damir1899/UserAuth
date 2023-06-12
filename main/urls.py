@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import IndexView, AddProductView, ProductView, CategoryView, LogoutUserView, SignUpUserView, SignInUserView
+from .views import IndexView, AddProductView, ProductView, \
+    CategoryView, LogoutUserView, SignUpUserView, \
+        SignInUserView, UserProfileView, UserEditProfileView, \
+            SettingsView
 
 urlpatterns = [
     path("", IndexView),
@@ -9,4 +12,7 @@ urlpatterns = [
     path('signup/', SignUpUserView),
     path('signin/', SignInUserView),
     path('logout/', LogoutUserView),
+    path('profile/', UserProfileView),
+    path('profile/edit/', UserEditProfileView),
+    path('settings/', SettingsView),
     ]

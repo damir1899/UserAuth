@@ -1,5 +1,6 @@
 from django.db import models
-from .utils import valid_price
+from .utils import valid_price, validate_phone_number
+from django.contrib.auth.models import User
 
 
 
@@ -29,5 +30,15 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products" 
+        
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    image = models.ImageField(upload_to='profile/', verbose_name='Фото профиля', help_text='Фотография должно быть квадратным', blank=True, null=True)
+    description = models.TextField(max_length=255, verbose_name='Информация', blank=True, null=True)
+    birth_date = models.DateField(verbose_name='Дата рождения', blank=True, null=True)
+    phone = models.CharField(max_length=20, verbose_name='Номер телефона', validators=[validate_phone_number])
+    
+    
         
 

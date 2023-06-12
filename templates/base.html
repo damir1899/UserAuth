@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    {% block head %}{% endblock %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +28,12 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li>
                             <a href="/" class="nav-link px-2 text-white">
-                            Home
+                                Home
                             </a>
                         </li>
                         <li>
                             <a href="/product" class="nav-link px-2 text-white">
-                            Product
+                                Product
                             </a>
                         </li>
                         <li>
@@ -50,24 +51,26 @@
                         <form method="get">
                             {% if user.is_authenticated %}
                             <div class="btn-group">
-                              <button type="button" class="btn btn-outline-light dropdown-toggle mx-2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Привет {{ user.username }}
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/logout">Выйти</a>
-                              </div>
+                                <button type="button" class="btn btn-outline-light dropdown-toggle mx-2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Привет {{ user.username }}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+                                    <a class="dropdown-item" href="/settings">Settings</a>
+                                    <a class="dropdown-item" href="/logout">Logout</a>
+                                </div>
                             </div>
                             {% else %}
                             <a href="/signin">
-                              <button type="button" class="btn btn-outline-light me-2">Login</button>
+                                <button type="button" class="btn btn-outline-light me-2">Login</button>
                             </a>
                             <a href="/signup">
-                              <button type="button" class="btn btn-warning">Sign-up</button>
+                                <button type="button" class="btn btn-warning">Sign-up</button>
                             </a>
                             {% endif %}
-                          </form>
-                
+                        </form>
+
                     </div>
                 </div>
             </div>
